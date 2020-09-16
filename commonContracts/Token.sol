@@ -2,11 +2,15 @@ pragma solidity ^0.7.0;
 
 import "../commonContracts/SafeMath.sol";
 import "../commonContracts/SafeTransfer.sol";
+import "./commonContracts/AccessController.sol";
+import "./commonContracts/ERC20Token";
 
 
 //SafeTransfer not used yet..
 
-contract ERC20 {
+
+
+contract TokenManager {
     using SafeMath for uint256;
     //using SafeTransfer for address;
 
@@ -246,8 +250,8 @@ contract ERC20 {
 }
 
 
-contract Token is ERC20 {
-	constructor() ERC20("NEWTOKE","NEWTOKE") {
+contract Token is TokenManager {
+	constructor() TokenManager("NEWTOKE","NEWTOKE") {
 		_mint(msg.sender, 100000000000E18);
 	}
 }
